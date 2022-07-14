@@ -1,19 +1,42 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  TouchableWithoutFeedback, 
+  TouchableOpacity, 
+  TouchableHighlight, 
+  TouchableNativeFeedback, 
+  Image, 
+  SafeAreaView } from 'react-native';
 
 export default function App() {
+  const handlePress = () => console.log("Text pressed");
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={styles.container}>
+      <Text numberOfLines={1} onPress={handlePress}>
+        Hello React Native - A really really long text. Now even longer and see what happens!
+        </Text>
+        <TouchableNativeFeedback onPress={() => console.log("Image tapped")}>
+          <Image 
+            blurRadius={10}
+            fadeDuration={1000}
+            source={{
+              height: 300,
+              width: 300,
+              uri: "https://picsum.photos/200/300",
+            }}/>
+          </TouchableNativeFeedback>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'dodgerblue',
     alignItems: 'center',
     justifyContent: 'center',
   },
