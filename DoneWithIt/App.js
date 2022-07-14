@@ -8,7 +8,9 @@ import {
   TouchableHighlight, 
   TouchableNativeFeedback, 
   Image, 
-  SafeAreaView } from 'react-native';
+  SafeAreaView, 
+  Alert,
+  Button} from 'react-native';
 
 export default function App() {
   const handlePress = () => console.log("Text pressed");
@@ -28,6 +30,17 @@ export default function App() {
               uri: "https://picsum.photos/200/300",
             }}/>
           </TouchableNativeFeedback>
+          <Button 
+            color="orange"
+            title="Click Me" 
+            onPress={() => 
+            //   Alert.alert("My title", "My message", [
+            //   {text: "Yes", onPress: () => console.log("Yes")},
+            //   {text: "No", onPress: () => console.log("No")},
+            // ])
+              Alert.prompt("My Title", "My Message", text => console.log(text))
+          }
+            />
       <StatusBar style="auto" />
     </SafeAreaView>
   );
