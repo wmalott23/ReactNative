@@ -10,10 +10,17 @@ import {
   Image, 
   SafeAreaView, 
   Alert,
-  Button} from 'react-native';
+  Button,
+  Platform,
+  StatusBar,
+  Dimensions,
+  } from 'react-native';
+  import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
 
 export default function App() {
   const handlePress = () => console.log("Text pressed");
+  console.log(useDimensions());
+  const {landscape} = useDeviceOrientation();
   
   return (
     <SafeAreaView style={styles.container}>
@@ -50,7 +57,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'dodgerblue',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    /* height: landscape ? '100%' : 30%*/
   },
 });
